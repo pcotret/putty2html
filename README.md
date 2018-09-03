@@ -2,7 +2,7 @@
 A quick tool to convert Putty logs in HTML while giving some colors to predefined keywords
 
 ## Version 1
-Everything is hardcoded. I know, it's awfulC
+Everything is hardcoded. I know, it's awful
  
 ```bash
 python putty2html.py -i <inputfile> -o <outputfile>
