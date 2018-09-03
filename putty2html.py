@@ -28,13 +28,13 @@ def main(argv):
     outfile.write(header)
     for current_line in infile:
         if 'keyword1' in current_line:
-            a='<font color=#ff0000>'+current_line+'</br>'
+            a = '<font color=#ff0000>' + current_line + '</br>'
         elif 'keyword2' in current_line:
-            a='<font color=#00ff00>'+current_line+'</br>'
+            a = '<font color=#00ff00>' + current_line + '</br>'
         elif 'keyword3' in current_line:
-            a='<font color=#0000ff>'+current_line+'</br>'
+            a = '<font color=#0000ff>' + current_line + '</br>'
         else:
-            a='<font color=#000000>'+current_line+'</br>'
+            a = '<font color=#000000>' + current_line + '</br>'
         outfile.write(a)
     outfile.write(footer)
     outfile.close()
