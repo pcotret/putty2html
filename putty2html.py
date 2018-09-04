@@ -1,7 +1,28 @@
 #!/usr/bin/python
+
+# Import libraries
+import ConfigParser
 import sys, getopt
 
+# Configuration settings
+Config = ConfigParser.ConfigParser()
+Config.read('config/config.ini')
 
+# Functions
+def ConfigSectionMap(section):
+    dict1 = {}
+    options = Config.options(section)
+    for option in options:
+        try:
+            dict1[option] = Config.get(section, option)
+            if dict1[option] == -1:
+                DebugPrint("skip: %s" % option)
+        except:
+            print("exception on %s!" % option)
+            dict1[option] = None
+    return dict1
+	
+# Main loop
 def main(argv):
     inputfile = ''
     outputfile = ''
@@ -28,11 +49,11 @@ def main(argv):
     outfile.write(header)
     for current_line in infile:
         if 'keyword1' in current_line:
-            a = '<font color=#ff0000>' + current_line + '</br>'
+            a = '<font color=' + ConfigSectionMap('Color')['keyword1'] + '>' + current_line + '</br>'
         elif 'keyword2' in current_line:
-            a = '<font color=#00ff00>' + current_line + '</br>'
+            a = '<font color=' + ConfigSectionMap('Color')['keyword2'] + '>' + current_line + '</br>'
         elif 'keyword3' in current_line:
-            a = '<font color=#0000ff>' + current_line + '</br>'
+            a = '<font color=' + ConfigSectionMap('Color')['keyword3'] + '>' + current_line + '</br>'
         else:
             a = '<font color=#000000>' + current_line + '</br>'
         outfile.write(a)
